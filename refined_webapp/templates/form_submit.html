@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+<div id="container">
+  <div class="title">
+    <h1>POST request with Flask</h1>
+  </div>
+  <div id="content">
+    <form method="post" action="{{ url_for('results') }}">
+      <label for="symbol">Please enter symbol:</label>
+      <input type="text" name="symbol" /><br />
+      <label for="trend1">Please enter trend1:</label>
+      <input type="text" name="trend1" /><br />
+      <label for="trend2">Please enter trend2:</label>
+      <input type="text" name="trend2" /><br />
+      <input type="submit" />
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
+
+
+
