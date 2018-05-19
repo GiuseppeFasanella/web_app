@@ -1,0 +1,4 @@
+51 7 * * 1-5 /home/pi/Desktop/Sveglia_mattutina/alarm_clock_pi.sh /home/pi/Desktop/Sveglia_mattutina/AudioLibri/IlPiacere/
+51 8 * * 1-5 /home/pi/Desktop/Sveglia_mattutina/killer_alarm_pi.sh
+51 8 * * 6-7 /home/pi/Desktop/Sveglia_mattutina/alarm_clock_pi.sh /home/pi/Desktop/Sveglia_mattutina/AudioLibri/IlPiacere/
+51 9 * * 6-7 /home/pi/Desktop/Sveglia_mattutina/killer_alarm_pi.sh

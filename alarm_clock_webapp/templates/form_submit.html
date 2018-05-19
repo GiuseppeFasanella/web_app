@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+<div id="container">
+  <div class="title">
+    <h1>Set time</h1>
+  </div>
+  <div id="content">
+    <form method="post" action="{{ url_for('results') }}">
+      <label for="day">d :</label>
+      <input type="text" name="day" /><br />
+      <label for="h">h :</label>
+      <input type="text" name="h" /><br />
+      <label for="m">m:</label>
+      <input type="text" name="m" /><br />
+      <label for="dir_to_play">directory to play:</label>
+      <input type="text" name="dir_to_play" /><br />
+      <input type="submit" />
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
+
+
+

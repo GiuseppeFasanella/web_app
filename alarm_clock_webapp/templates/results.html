@@ -1,0 +1,14 @@
+<!-- results.html -->
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <h1>Alarm setted for {{ day }} at {{ h }} : {{ m }}</h1>
+    <iframe src="{{ url_for('static', filename = 'cron_jobs.txt') }}", width=1000, CONTENT="NO-CACHE"></iframe>
+    <!--<iframe src="http://localhost/temp/cron_jobs.txt", width=1000></iframe>-->
+
+    <br><br>
+
+
+
+{% endblock %}
