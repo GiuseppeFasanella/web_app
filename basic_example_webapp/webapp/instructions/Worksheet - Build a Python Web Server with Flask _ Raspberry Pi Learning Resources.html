@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://www.raspberrypi.org/learning/python-web-server-with-flask/worksheet/ -->
+<html lang="en-GB"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Worksheet - Build a Python Web Server with Flask | Raspberry Pi Learning Resources</title>
+    <meta name="description" content="The worksheet for the Build a Python Web Server with Flask Learning Resource for Raspberry Pi">
+    <link rel="icon" type="image/png" href="https://www.raspberrypi.org/wp-content/themes/mind-control/images/favicon.png">
+    <link rel="publisher" href="https://plus.google.com/+RaspberryPi">
+    <link rel="stylesheet" href="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/prism.css">
+    <link rel="stylesheet" href="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/style.css">
+    <link rel="stylesheet" href="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/css">
+    <link rel="stylesheet" href="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/css(1)">
+
+    <script type="text/javascript" async="" src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/ga.js"></script><script>
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-46270871-1']);
+        _gaq.push(['_gat._forceSSL']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : '//www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <script src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/prism.js"></script>
+</head>
+
+<body class="learning worksheet learn worksheet ">
+    <div class="container">
+        <header class="header">
+            <a href="https://www.raspberrypi.org/resources/" class="heading" title="Back to raspberrypi.org">Raspberry Pi Learning Resources</a>
+        </header>
+
+        <nav class="nav breadcrumbs">
+            <ul>
+                <li><a href="https://www.raspberrypi.org/learning/python-web-server-with-flask/">Build a Python Web Server with Flask</a></li><li>Worksheet</li>            </ul>
+        </nav>
+
+        <nav class="nav resource-categories">
+            <ul>
+                <li class="teach"><a href="https://www.raspberrypi.org/resources/teach/">Teach</a></li>
+                <li class="learn"><a href="https://www.raspberrypi.org/resources/learn/">Learn</a></li>
+                <li class="make"><a href="https://www.raspberrypi.org/resources/make/">Make</a></li>
+            </ul>
+        </nav>
+
+        <div class="main">
+
+<article class="content">
+
+    <h1>Build a Python-powered web server with Flask</h1>
+<p>Install the lightweight web framework Flask and set up a basic web server with different pages, using Python, HTML, and CSS.</p>
+<h2>Installing pip and Flask</h2>
+<p>First you're going to install the Flask package. Make sure you are connected to the internet, either by Ethernet cable or WiFi before you start.</p>
+<ol>
+<li>
+<p>Start by opening a Terminal window from the taskbar or applications menu:</p>
+<p><img src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/open-terminal.png" alt="Open Terminal window"></p>
+</li>
+<li>
+<p>Next, you'll need to install <code>pip</code> by typing the following command and pressing <strong>Enter</strong> on the keyboard:</p>
+<pre class=" language-bash"><code class=" language-bash">sudo apt<span class="token operator">-</span>get install python<span class="token operator">-</span>pip</code></pre>
+<p><code>pip</code> is a tool for installing Python packages from the Python Packaging Index (PyPi): you can browse packages at <a href="https://pypi.python.org/">pypi.python.org</a>.</p>
+</li>
+<li>
+<p>Now use <code>pip</code> to install Flask by typing:</p>
+<pre class=" language-bash"><code class=" language-bash">sudo pip install flask</code></pre>
+<p>And press <strong>enter</strong>.</p>
+</li>
+</ol>
+<h2>Building a basic Flask web application</h2>
+<p>Now you're going to set up a basic web application with Flask and Python. You will be able to run a single web page and display some text on a web browser.</p>
+<ol>
+<li>
+<p>Return to the Terminal window and create a new folder called <code>webapp</code> by typing:</p>
+<pre class=" language-bash"><code class=" language-bash">mkdir webapp</code></pre>
+<p><code>mkdir</code> means "make directory": a directory is a folder which can contain files and more folders.</p>
+</li>
+<li>
+<p>Navigate into this directory by using the <code>cd</code> command and pressing <strong>Enter</strong>:</p>
+<pre class=" language-bash"><code class=" language-bash">cd webapp</code></pre>
+<p><code>cd</code> means "change directory": you use it to enter a folder.</p>
+</li>
+<li>
+<p>Flask applications can be run from a single file, so you need to create the file now using the <code>touch</code> command, like this:</p>
+<pre class=" language-bash"><code class=" language-bash">touch app<span class="token punctuation">.</span>py</code></pre>
+<p>This will create a file named <code>app.py</code>, in which all our application code will be written.</p>
+</li>
+<li>
+<p>Enter the following command to open this file in the <strong>Python 2</strong> IDE (IDLE), in order to get started writing your web app:</p>
+<pre class=" language-bash"><code class=" language-bash">idle app<span class="token punctuation">.</span>py <span class="token operator">&amp;</span></code></pre>
+<p>The ampersand (&amp;) on the end of this command tells it to open IDLE in a new process. Unlike a command like <code>cd</code>, this command doesn't finish until you close the IDLE window. Opening IDLE in a new process allows you to enter more commands into the Terminal without quitting IDLE.</p>
+</li>
+<li>
+<p>An empty window with <code>app.py</code> displayed in the title bar will appear. You'll write your application code here and when you run your code, any printed messages or errors will be shown in a Python shell window.</p>
+</li>
+<li>
+<p>Now enter the following lines into the blank <code>app.py</code> window:</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> index<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">'Hello world'</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> host<span class="token operator">=</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">)</span></code></pre>
+<p>Note here the <code>host='0.0.0.0'</code> means the web app will be accessible to any device on the network.</p>
+</li>
+<li>
+<p>Save the file with <code>Ctrl + S</code>. Now return to the Terminal window and enter <code>python app.py</code> to run the web server.</p>
+<p>If everything has been written correctly, you should see an output similar to this:</p>
+<pre><code>* Restarting with stat
+* Debugger is active!
+* Debugger pin code: 425-241-775</code></pre>
+</li>
+<li>
+<p>Open the Pi's web browser from the taskbar or application menu and navigate to <code>http://127.0.0.1:5000/</code>. You should see a white screen with the words <code>Hello world</code>:</p>
+<p><img src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/flask-hello-world.png" alt="Flask Hello world"></p>
+<p><em>Note: <code>127.0.0.1</code> means 'home' i.e. this computer, and <code>:5000</code> means 'port 5000', which is the port the web server is running on</em></p>
+</li>
+</ol>
+<h2>Adding a new route to your web app</h2>
+<p>Now you're going to add a new route to your web app, which will create another web page.</p>
+<p>In a web application, a route is a certain path into your website, determined by the request sent by the user when they type it into their web browser. It's up to you which routes are enabled and what each of them does.</p>
+<p>In the "Hello World" example we used a single route:</p>
+<pre class=" language-python"><code class=" language-python">@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> index<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">'Hello world'</span></code></pre>
+<p>This route is made up of three parts:</p>
+<ul>
+<li><code>@app.route('/')</code>: this determines the entry point; the <code>/</code> means the root of the website, so just <code>http://127.0.0.1:5000/</code>.</li>
+<li><code>def index()</code>: this is the name we give to the route. Here it was called <code>index</code> because it's the index of the website.</li>
+<li><code>return 'Hello world'</code>: this is the content of the web page, which is returned when the user browses the index of the website.</li>
+</ul>
+<ol>
+<li>
+<p>Create a new route by adding the following lines below the first route:</p>
+<pre class=" language-python"><code class=" language-python">@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/cakes'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> cakes<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">'Yummy cakes!'</span></code></pre>
+</li>
+<li>
+<p>Save your code and navigate to your website's cake page in the browser at <code>127.0.0.1:5000/cakes</code>. You should see a webpage with the text <code>Yummy cakes!</code> on it:</p>
+<p><img src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/flask-cakes.png" alt="Yummy Cakes"></p>
+</li>
+</ol>
+<h2>Add HTML templates to your web app</h2>
+<p>Next, you'll modify your existing routes to return full HTML templates, rather than simple text strings.</p>
+<ol>
+<li>
+<p>First, create a <code>templates</code> directory in your <code>webapp</code> directory by entering this into the Terminal:</p>
+<pre class=" language-bash"><code class=" language-bash">mkdir templates</code></pre>
+</li>
+<li>
+<p>Open <code>Text Editor</code> under <code>Accessories</code> in the main menu:</p>
+<p><img src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/open-text-editor.png" alt="Text Editor"></p>
+<p>This will open up a basic text editor called Leafpad.</p>
+</li>
+<li>
+<p>Enter the following HTML code:</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Hello from a template!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</li>
+<li>
+<p>Save the file as <code>index.html</code> in the <code>templates</code> directory, which you'll find inside the <code>pi</code> and then <code>webapp</code> directories.</p>
+</li>
+<li>
+<p>Return to your <code>app.py</code> file in IDLE and modify the first line of your code to import the <code>render_template</code> function as well:</p>
+<pre class=" language-python"><code class=" language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template</code></pre>
+</li>
+<li>
+<p>Finally, you'll need to modify your index view to return the HTML template instead of the normal text. Change the <code>index()</code> function to this:</p>
+<pre class=" language-python"><code class=" language-python">@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> index<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">)</span></code></pre>
+<p>Flask will look for <code>index.html</code> in a directory called <code>templates</code>, in the same directory as the <code>app.py</code> file.</p>
+</li>
+<li>
+<p>Save the file. Make sure your web app is still running. If you stopped it, just run <code>python app.py</code> from your <code>webapp</code> directory.</p>
+</li>
+<li>
+<p>Reload the route in your web browser (go to the base route at <code>http://127.0.0.1:5000/</code>) to see your new HTML template being displayed.</p>
+<p><img src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/flask-template.png" alt="Hello from a template!"></p>
+<p>In this case it's not much different as all you've done is added a header, but there's plenty of scope to expand!</p>
+</li>
+</ol>
+<h2>Adding colour to the web page with CSS</h2>
+<p>Cascading Style Sheets (CSS) are rules for how HTML content is displayed by the browser. Now you'll add some CSS to add colour to your web page.</p>
+<ol>
+<li>
+<p>First, return to the Terminal window and navigate to the <code>webapp</code> directory. If you're in the <code>templates</code> directory, go back up one level with <code>cd ..</code>.</p>
+</li>
+<li>
+<p>Create a new directory called <code>static</code>.</p>
+</li>
+<li>
+<p>Then open a new window with the basic text editor (Leafpad), or re-open the text editor from the menu.</p>
+</li>
+<li>
+<p>Save the new file as <code>style.css</code> in the new <code>static</code> directory.</p>
+</li>
+<li>
+<p>Add the following CSS rules to the file:</p>
+<pre class=" language-css"><code class=" language-css"><span class="token selector">body </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note here we've used colour names: usually colours are defined by hex codes like <code>#ff0000</code> (red) but this is a simple example.</p>
+</li>
+<li>
+<p>Save the file.</p>
+</li>
+<li>
+<p>Now modify your HTML template called <code>index.html</code> to include the CSS file, by adding a <code>&lt;head&gt;</code> tag containing a <code>&lt;link&gt;</code> tag with a reference to the stylesheet:</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+&lt;link rel="stylesheet" href='/static/style.css' /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Hello from a template!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</li>
+<li>
+<p>Save the HTML file and reload the web server. You should see a colourful version of the web app!</p>
+<p><img src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/flask-app-with-colour.png" alt="Flask app with colour"></p>
+</li>
+</ol>
+<p>You have so far created a number of files and directories. It is worth just double-checking your <code>webapp</code> project directory, which should contain the following and have a structure like this now:</p>
+<pre><code>├── app.py
+├── static
+│&nbsp;&nbsp; └── style.css
+└── templates
+    └── index.html</code></pre>
+<p>If your web app doesn't look right, check you saved your CSS file in the right place.</p>
+<h2>Adding dynamic content to a view</h2>
+<p>So far you've learned to deliver HTML template through a web server running on your Raspberry Pi. Wouldn't it be good if you could add some dynamic content to the pages to display different information? Large websites like Facebook, YouTube and BBC News show different content depending on the route you visit, even though the templates are very similar.</p>
+<p>Now you'll create a new route on your website so that when you go to <code>http://127.0.0.1/hello/name</code>, it will say "Hello name!" and replace 'name' with whatever you put there; so <code>/hello/Paul/</code> will display "Hello Paul!".</p>
+<ol>
+<li>
+<p>Create a new route in your application like so:</p>
+<pre class=" language-python"><code class=" language-python">@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/hello/&lt;name&gt;'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> hello<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'page.html'</span><span class="token punctuation">,</span> name<span class="token operator">=</span>name<span class="token punctuation">)</span></code></pre>
+<ul>
+<li><code>@app.route('/hello/&lt;name&gt;')</code> - the <code>&lt;name&gt;</code> part means it passes the name into the <code>hello</code> function as a variable called <code>name</code></li>
+<li><code>def hello(name)</code> - this is the function that determines what content is shown - this time it takes the given name as a parameter</li>
+<li><code>return render_template('page.html', name=name)</code> - here we look up the template <code>page.html</code> and pass in the variable <code>name</code> from the URL, so the template can use it</li>
+</ul>
+</li>
+<li>
+<p>Create a new HTML template called <code>page.html</code> using the text editor, and add the following HTML code to it:</p>
+<pre><code class="language-html">&lt;h1&gt;Hello {{ name }}!&lt;/h1&gt;</code></pre>
+<p>Note here we've neglected the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> tags. This is OK for testing but real websites should have a full HTML structure.</p>
+</li>
+<li>
+<p>Save the files, reload the web server and visit <code>http://127.0.0.1:5000/hello/paul</code>. It should look like this:</p>
+<p><img src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/flask-hello-paul.png" alt="Hello Paul!"></p>
+<p>Try it with different names!</p>
+</li>
+</ol>
+<h3>What's happening here?</h3>
+<p>Flask uses <code>jinja</code>, a Python library for rendering templates. Use the braces (curly brackets) on this line:</p>
+<pre><code class="language-html">&lt;h1&gt;Hello {{ name }}!&lt;/h1&gt;</code></pre>
+<p>It tells the template to render the variable <code>name</code> which was passed in the route function <code>hello</code>.</p>
+<p>What happens when you just visit <code>127.0.0.1:5000/hello/</code> without a name? Think about how you can prevent this giving an error.</p>
+<h2>Browsing on other devices</h2>
+<p>Since we used <code>host='0.0.0.0'</code>, on the <code>app.run</code> line, the web server is accessible to any device on the same network, including other computers, tablets, and smartphones.</p>
+<ol>
+<li>
+<p>Enter the following command in the Terminal window to find your Raspberry Pi's IP address:</p>
+<pre class=" language-bash"><code class=" language-bash">hostname <span class="token operator">-</span>I</code></pre>
+<p>You should get something like <code>192.168.1.3</code>.</p>
+</li>
+<li>
+<p>Take another computer, tablet or smartphone, and make sure it's connected to the same network as the Raspberry Pi.</p>
+</li>
+<li>
+<p>Open up a web browser on the other device and enter the Raspberry Pi's IP address into the address bar with <code>:5000</code> on the end e.g. <code>http://192.168.1.3:5000/</code>:</p>
+<p><img src="./Worksheet - Build a Python Web Server with Flask _ Raspberry Pi Learning Resources_files/flask-on-android.png" alt="Address bar"></p>
+</li>
+<li>You should now see the web app from the other device. Try navigating to the other pages too.</li>
+</ol>
+<h2>What next?</h2>
+<ul>
+<li>Try adding links between pages using anchor tags like <code>&lt;a href='/hello/Paul/'&gt;Hello Paul&lt;/a&gt;</code>.</li>
+<li>Add parameters to a previous route to make other views dynamic.</li>
+<li>Add more CSS rules to each of your routes.</li>
+<li>Learn more about HTML, CSS and web development with <a href="https://www.raspberrypi.org/learning/coder-html-css-lessons/">Google Coder</a>, <a href="https://developer.mozilla.org/en-US/Learn">Mozilla Developer Network</a> and <a href="https://www.codecademy.com/en/tracks/web">Codecademy</a>.</li>
+<li>Learn more about Flask using the <a href="http://flask.pocoo.org/docs">Flask documentation</a>.</li>
+<li>Create a physical computing project with Raspberry Pi and use Flask to create a web interface to it (see <a href="http://mattrichardson.com/Raspberry-Pi-Flask/index.html">Matt Richardson's guide</a>, <a href="https://github.com/bennuttall/bett-bot">BETT Bot</a> and <a href="http://www.pythonhosted.org/energenie/examples/web/">Energenie</a>).</li>
+<li>Use a Flask web app as the control panel in a home automation project: turn the lights on from your phone!</li>
+</ul>
+</article>
+
+            <div style="clear:both;"></div>
+
+            <footer class="footer">
+                <a href="https://www.raspberrypi.org/creative-commons/" class="logo cc">Creative Commons</a>
+                <small>
+                    <p>This learning resource is provided for free by the <a href="https://www.raspberrypi.org/">Raspberry Pi Foundation</a> under a <a href="https://www.raspberrypi.org/creative-commons/">Creative Commons</a> licence.</p>
+                    <p>Find more at <a href="https://www.raspberrypi.org/resources/">raspberrypi.org/resources</a> and <a href="https://github.com/raspberrypilearning">github.com/raspberrypilearning</a>.</p>
+                </small>
+                <a href="https://github.com/raspberrypilearning/python-web-server-with-flask/" class="logo gh" title="View and edit this resource on GitHub">View and edit this resource on GitHub</a>
+            </footer>
+
+        </div>
+    </div>
+
+
+</body></html>
